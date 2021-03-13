@@ -8,5 +8,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="SRP"/>
 	<classpathentry kind="src" path="Register"/>
+	<classpathentry kind="src" path="OCP"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
