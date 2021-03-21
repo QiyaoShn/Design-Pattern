@@ -1,20 +1,16 @@
 package SimpleFactoryPattern;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
 public class Factory {
 
-    public static Fruit CreateFruit(String fruit)throws Exception{
-        if(fruit.equals("Apple")) {
-        	System.out.println("水果工厂生产苹果！");
-        	return new Apple();
-        }else if(fruit.equals("Banana")) {
-        	System.out.println("水果工厂生产香蕉！");
-        	return new Banana();
-        }else if(fruit.equals("Peach")) {
-        	System.out.println("水果工厂生产桃子！");
-        	return new Peach();
-        }
-        else {
-        	throw new Exception("对不起，暂时不能生产该水果！");
-        }
+    public static Fruit CreateFruit(String fruitName)throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, ClassNotFoundException{
+       Class<?> classCal = Class.forName("SimpleFactoryPattern."+fruitName);
+       Constructor<?> c = classCal.getConstructor();
+       Fruit cal = (Fruit)c.newInstance();
+       return cal;
+       //利用反射机制，使用类的无参数构造器来新建一个类的实例
+       // 另一种实现方式：return (Fruit)Class.forName("SimpleFactoryPattern."+fruitName).getDeclaredConstructor().newInstance();
     }
-
 }
