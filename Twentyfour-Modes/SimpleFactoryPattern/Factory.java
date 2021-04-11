@@ -4,7 +4,8 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 public class Factory {
-
+	//使用静态工厂方法，造成工厂角色无法形成基于继承的等级结构，
+	//因此只适用于一些并不复杂的环境下
     public static Fruit CreateFruit(String fruitName)throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, ClassNotFoundException{
        Class<?> classCal = Class.forName("SimpleFactoryPattern."+fruitName);
        Constructor<?> c = classCal.getConstructor();
